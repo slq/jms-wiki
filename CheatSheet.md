@@ -72,3 +72,36 @@
       * leave body empty - no payload
 
 ![Jms-message-structure](https://github.com/slq/jms-wiki/blob/messaging-models/src/main/resources/jms-message-structure.PNG)
+
+## Guaranteed delivery
+* Requires message persistence
+* Only persistent messages survive system failures
+* Performance hit
+* Routine
+  * Happy path
+    1. Send: message producer -> jms provider 
+    2. Persist: jms provider -> persistent store
+    3. Ack: jms provider -> message producer
+    4. Deliver: jms provider -> message consumer
+    5. Ack: message consumer -> jms provider
+    6. Delete: jms provider -> persistent store
+  * System failure before ack
+    * Exception sent to producer - message is still in producer
+    * Message not persisted
+  * System failure after ack
+    * Message is persisted
+    * Message is delivered to consumer after system is restored
+* Routine (no persistency)
+  * Happy path
+    1. Send ->
+    2. Ack <-
+    3. Deliver ->
+    4. Ack <-
+  * System failure before ack
+    * Exception sent to producer - message is still in producer
+  * System failure after ack
+    * Message is in memory
+    * Message is lost, never delivered to consumer
+    
+![Jms-message-structure](https://github.com/slq/jms-wiki/blob/messaging-models/src/main/resources/jms-persistent-messages.PNG)
+
