@@ -71,7 +71,7 @@
       * set properties in header (optional)
       * leave body empty - no payload
 
-![Jms-message-structure](https://github.com/slq/jms-wiki/blob/messaging-models/src/main/resources/jms-message-structure.PNG)
+![Jms-message-structure](https://github.com/slq/jms-wiki/blob/master/src/main/resources/jms-message-structure.PNG)
 
 ## Guaranteed delivery
 * Requires message persistence
@@ -103,5 +103,5 @@
     * Message is in memory
     * Message is lost, never delivered to consumer
     
-![Jms-message-structure](https://github.com/slq/jms-wiki/blob/messaging-models/src/main/resources/jms-persistent-messages.PNG)
+![Jms-message-structure](https://github.com/slq/jms-wiki/blob/master/src/main/resources/jms-persistent-messages.PNG)
 
